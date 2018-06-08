@@ -1,0 +1,6 @@
+#slider .parameter-value text {
+	font-size: 14px;
+	-webkit-transition: fill 1s;
+	transition: fill 1s;
+	fill: #fff;
+}
