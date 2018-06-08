@@ -183,9 +183,7 @@ class DailyDoubleHeatMap extends Component {
 			.attr("text-anchor", "middle")
 			.attr("alignment-baseline", "central")
 			.attr("class", "tip")
-			.text("")
-			.transition().duration(1000)
-			.text(function(d) { return d; });
+			.text("");
 
 		var gRow = heatRows.selectAll("g.rowTip")
 			.data(this.props.data.rowTotals)
