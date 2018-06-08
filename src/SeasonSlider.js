@@ -14,6 +14,7 @@ class SeasonSlider extends Component {
 
 	componentDidMount() {
 		this.createSeasonSlider();
+		this.setState({ season: this.props.startSeason });
 	}
 
 	createSeasonSlider() {

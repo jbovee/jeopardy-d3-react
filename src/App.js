@@ -8,7 +8,7 @@ class App extends Component {
       <div className="App">
         <h1 className="App-title">Jeopardy Visualizations</h1>
 	      <div>
-	      <SeasonSlider />
+	      <SeasonSlider startSeason={1}/>
 	      </div>
       </div>
     );
