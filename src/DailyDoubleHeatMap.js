@@ -282,29 +282,44 @@ class DailyDoubleHeatMap extends Component {
 				return colors(d * factor);
 			});
 
+		g.selectAll("text.tip")
+			.data(function(d) { return d; })
+			.transition().duration(1000)
+			.text(function(d) { return d; });
+
 		colors.domain([1, max(this.props.data.rowTotals) * factor]);
 
-		var gCol = select(node)
+		var gRow = select(node)
 			.select("g.rowTotals");
 
-		gCol.selectAll("rect.heatRow")
+		gRow.selectAll("rect.heatRow")
 			.data(this.props.data.rowTotals)
 			.transition().duration(1000)
 			.attr("fill", function(d) {
 				return colors(d * factor);
 			});
 
+		gRow.selectAll("text.rowTipText")
+			.data(this.props.data.rowTotals)
+			.transition().duration(1000)
+			.text(function(d) { return d; });
+
 		colors.domain([1, max(this.props.data.colTotals) * factor]);
 
-		var gRow = select(node)
+		var gCol = select(node)
 			.select("g.colTotals");
 
-		gRow.selectAll("rect.heatCol")
+		gCol.selectAll("rect.heatCol")
 			.data(this.props.data.colTotals)
 			.transition().duration(1000)
 			.attr("fill", function(d) {
 				return colors(d * factor);
 			});
+
+		gCol.selectAll("text.colTipText")
+			.data(this.props.data.colTotals)
+			.transition().duration(1000)
+			.text(function(d) { return d; });
 	}
 
 	render() {
