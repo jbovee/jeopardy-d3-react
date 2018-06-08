@@ -271,7 +271,7 @@ class DailyDoubleHeatMap extends Component {
 
 		colors.domain([1, max(this.props.data.reduced) * factor]);
 
-		const g= select(node)
+		var g= select(node)
 			.selectAll("g.col")
 			.data(this.props.data.locationTotals);
 
@@ -284,7 +284,7 @@ class DailyDoubleHeatMap extends Component {
 
 		colors.domain([1, max(this.props.data.rowTotals) * factor]);
 
-		const gCol = select(node)
+		var gCol = select(node)
 			.select("g.rowTotals");
 
 		gCol.selectAll("rect.heatRow")
@@ -296,7 +296,7 @@ class DailyDoubleHeatMap extends Component {
 
 		colors.domain([1, max(this.props.data.colTotals) * factor]);
 
-		const gRow = select(node)
+		var gRow = select(node)
 			.select("g.colTotals");
 
 		gRow.selectAll("rect.heatCol")
