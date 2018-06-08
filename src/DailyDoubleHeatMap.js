@@ -30,8 +30,11 @@ class DailyDoubleHeatMap extends Component {
 		const cellHeight = 80
 		const margin = {"top": 40, "left": 60}
 
-		select(node)
-			.append("text")
+		var labels = select(node)
+			.append("g")
+			.attr("class", "labels")
+
+		labels.append("text")
 			.attr("class", "colTitle")
 			.attr("fill", "#fff")
 			.attr("x", 300 + margin.left)
@@ -41,8 +44,7 @@ class DailyDoubleHeatMap extends Component {
 			.attr("alignment-baseline", "central")
 			.text("Categories");
 
-		select(node)
-			.append("text")
+		labels.append("text")
 			.attr("class", "colTitle")
 			.attr("fill", "#fff")
 			.attr("x", 660 + margin.left)
@@ -52,8 +54,7 @@ class DailyDoubleHeatMap extends Component {
 			.attr("alignment-baseline", "central")
 			.text("Totals");
 
-		select(node)
-			.selectAll("text.rowTitle")
+		labels.selectAll("text.rowTitle")
 			.data(["200", "400", "600", "800", "1000"])
 			.enter().append("text")
 			.attr("class", "rowTitle")
@@ -66,8 +67,7 @@ class DailyDoubleHeatMap extends Component {
 			.attr("alignment-baseline", "central")
 			.text(function(d) { return d; })
 
-		select(node)
-			.append("text")
+		labels.append("text")
 			.attr("class", "rowTitle")
 			.attr("fill", "#fff")
 			.attr("transform", function() {
