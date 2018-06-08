@@ -28,7 +28,7 @@ class DailyDoubleHeatMap extends Component {
 		const factor = 10
 		const cellWidth = 100
 		const cellHeight = 80
-		const margin = {"top": 40, "left": 60}
+		const margin = {"top": 40, "left": 40, "bottom": 40, "right": 40}
 
 		var labels = select(node)
 			.append("g")
@@ -47,31 +47,29 @@ class DailyDoubleHeatMap extends Component {
 		labels.append("text")
 			.attr("class", "colTitle")
 			.attr("fill", "#fff")
-			.attr("x", 660 + margin.left)
-			.attr("y", margin.top / 2)
+			.attr("x", 300 + margin.left)
+			.attr("y", margin.top + (6 * cellHeight) + 10 + (margin.bottom / 2))
 			.attr("font-size", 18)
 			.attr("text-anchor", "middle")
 			.attr("alignment-baseline", "central")
 			.text("Totals");
 
-		labels.selectAll("text.rowTitle")
-			.data(["200", "400", "600", "800", "1000"])
-			.enter().append("text")
-			.attr("class", "rowTitle")
+		labels.append("text")
+			.attr("class", "colTitle")
 			.attr("fill", "#fff")
-			.attr("transform", function(d, i) {
-				return "translate(" + margin.left / 2 + " " + ((i * cellHeight) + cellHeight / 2 + margin.top) + ")";
+			.attr("transform", function() {
+				return "translate(" + margin.left / 2 + " " + ((5 * cellHeight / 2) + margin.top) + ")rotate(-90)";
 			})
 			.attr("font-size", 18)
 			.attr("text-anchor", "middle")
 			.attr("alignment-baseline", "central")
-			.text(function(d) { return d; })
+			.text("Values");
 
 		labels.append("text")
-			.attr("class", "rowTitle")
+			.attr("class", "colTitle")
 			.attr("fill", "#fff")
 			.attr("transform", function() {
-				return "translate(" + margin.left / 2 + " " + ((5 * cellHeight) + cellHeight / 2 + margin.top + 10) + ")";
+				return "translate(" + (margin.left + (7 * cellWidth) + 10 + (margin.right / 2)) + " " + ((5 * cellHeight / 2) + margin.top) + ")rotate(-90)";
 			})
 			.attr("font-size", 18)
 			.attr("text-anchor", "middle")
@@ -324,7 +322,7 @@ class DailyDoubleHeatMap extends Component {
 
 	render() {
 		return <svg ref={node => this.node = node}
-		width={770} height={530} viewBox="0 0 750 530" preserveAspectRatio="xMinYMax meet">
+		width={790} height={570} viewBox="0 0 790 570" preserveAspectRatio="xMinYMax meet">
 		</svg>
 	}
 }
