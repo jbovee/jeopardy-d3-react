@@ -28,6 +28,7 @@ class DailyDoubleHeatMap extends Component {
 		const factor = 10
 		const cellWidth = 100
 		const cellHeight = 80
+		const labelFontSize = 22
 		const margin = {"top": 40, "left": 40, "bottom": 40, "right": 40}
 
 		var labels = select(node)
@@ -39,7 +40,7 @@ class DailyDoubleHeatMap extends Component {
 			.attr("fill", "#fff")
 			.attr("x", 300 + margin.left)
 			.attr("y", margin.top / 2)
-			.attr("font-size", 18)
+			.attr("font-size", labelFontSize)
 			.attr("text-anchor", "middle")
 			.attr("alignment-baseline", "central")
 			.text("Categories");
@@ -49,7 +50,7 @@ class DailyDoubleHeatMap extends Component {
 			.attr("fill", "#fff")
 			.attr("x", 300 + margin.left)
 			.attr("y", margin.top + (6 * cellHeight) + 10 + (margin.bottom / 2))
-			.attr("font-size", 18)
+			.attr("font-size", labelFontSize)
 			.attr("text-anchor", "middle")
 			.attr("alignment-baseline", "central")
 			.text("Totals");
@@ -60,7 +61,7 @@ class DailyDoubleHeatMap extends Component {
 			.attr("transform", function() {
 				return "translate(" + margin.left / 2 + " " + ((5 * cellHeight / 2) + margin.top) + ")rotate(-90)";
 			})
-			.attr("font-size", 18)
+			.attr("font-size", labelFontSize)
 			.attr("text-anchor", "middle")
 			.attr("alignment-baseline", "central")
 			.text("Values");
@@ -71,7 +72,7 @@ class DailyDoubleHeatMap extends Component {
 			.attr("transform", function() {
 				return "translate(" + (margin.left + (7 * cellWidth) + 10 + (margin.right / 2)) + " " + ((5 * cellHeight / 2) + margin.top) + ")rotate(-90)";
 			})
-			.attr("font-size", 18)
+			.attr("font-size", labelFontSize)
 			.attr("text-anchor", "middle")
 			.attr("alignment-baseline", "central")
 			.text("Totals");
