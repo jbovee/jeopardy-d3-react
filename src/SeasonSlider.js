@@ -20,7 +20,7 @@ class SeasonSlider extends Component {
 
 	createSeasonSlider() {
 		const node = this.node
-		const numSeasons = 33,
+		const numSeasons = 34,
 			seasons = Array.from(new Array(numSeasons), (val,index)=>index+1);
 
 		var slider = sliderHorizontal()
