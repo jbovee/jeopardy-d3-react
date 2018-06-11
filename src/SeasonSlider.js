@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './SeasonSlider.css'
 import DailyDoubleHeatMap from './DailyDoubleHeatMap'
+import RoundStats from './RoundStats'
 import seasonsdata from './jeopardy-seasons-data'
 import seasonsdataall from './jeopardy-seasons-data-all'
 import { sliderHorizontal } from 'd3-simple-slider'
@@ -9,7 +10,7 @@ import { select } from 'd3-selection'
 class SeasonSlider extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { all: false, season: 1 };
+		this.state = { all: false, season: this.props.startSeason };
 		this.createSeasonSlider = this.createSeasonSlider.bind(this);
 	}
 
@@ -85,7 +86,9 @@ class SeasonSlider extends Component {
 	render() {
 		return [
 			<div><svg id="slider" ref={node => this.node = node} width={710} height={55} viewBox="0 0 710 55" preserveAspectRatio="xMinYMax meet"> </svg></div>,
-			<div><DailyDoubleHeatMap data={this.state.all ? seasonsdataall : seasonsdata.seasons[this.state.season - 1]} /></div>
+			<div><DailyDoubleHeatMap data={this.state.all ? seasonsdataall : seasonsdata.seasons[this.state.season - 1]} /></div>,
+			<div><RoundStats title={"Daily Double Wagers"} type={"dd"} data={this.state.all ? seasonsdataall : seasonsdata.seasons[this.state.season - 1]} /></div>,
+			<div><RoundStats title={"Final Jeopardy Wagers"} type={"fj"} data={this.state.all ? seasonsdataall : seasonsdata.seasons[this.state.season - 1]} /></div>
 		];
 	}
 }
