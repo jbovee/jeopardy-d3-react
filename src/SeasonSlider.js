@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './SeasonSlider.css'
 import DailyDoubleHeatMap from './DailyDoubleHeatMap'
+import DailyDoubleOrder from './DailyDoubleOrder'
 import RoundStats from './RoundStats'
 import seasonsdata from './jeopardy-seasons-data'
 import seasonsdataall from './jeopardy-seasons-data-all'
@@ -98,6 +99,15 @@ class SeasonSlider extends Component {
 				<h2 className="subtitle">Final Jeopardy Wagers</h2>
 				<RoundStats type={"fj"} data={selectedSeason} />
 			</div>,
+			<h2 className="subtitle indent">Daily Double Pick Order</h2>,
+			<div>
+				<h3 className="subsubtitle indent">Jeopardy Round</h3>
+				<DailyDoubleOrder data={selectedSeason} round={"j"}/>
+			</div>,
+			<div>
+				<h3 className="subsubtitle indent">Double Jeopardy Round</h3>
+				<DailyDoubleOrder data={selectedSeason} round={"dj"}/>
+			</div>
 		];
 	}
 }

@@ -1,0 +1,16 @@
+.bar {
+	fill: #fff;
+}
+
+path.domain {
+	stroke: none;
+}
+
+.tick line {
+	stroke: #fff;
+}
+
+.tick text {
+	fill: #fff;
+	font-size: 12px;
+}
