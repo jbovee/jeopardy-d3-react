@@ -2,15 +2,15 @@
 	fill: #fff;
 }
 
-path.domain {
+g.x-axis path.domain {
 	stroke: none;
 }
 
-.tick line {
+g.x-axis .tick line {
 	stroke: #fff;
 }
 
-.tick text {
+g.x-axis .tick text {
 	fill: #fff;
 	font-size: 12px;
 }

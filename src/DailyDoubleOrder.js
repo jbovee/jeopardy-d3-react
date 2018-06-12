@@ -75,6 +75,7 @@ class DailyDoubleOrder extends Component {
 
 		select(node)
 			.append("g")
+			.attr("class", "x-axis")
 			.attr("transform", function() {
 				return "translate(" + (width / 30 / 2) + " " + (height - 21) + ")";
 			})
