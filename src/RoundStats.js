@@ -27,24 +27,27 @@ class RoundStats extends Component {
 		var ctx = canvas.getContext("2d");
 		ctx.font = "24px sans-serif";
 
-		select(node)
-			.selectAll("text.stat-label")
+		var margin = select(node)
+			.append("g")
+			.attr("class", "svg-margins")
+			.attr("transform", "translate(40)");
+
+		margin.selectAll("text.stat-label")
 			.data(["Max: ", "Min: ", "Avg: "])
 			.enter().append("text")
 			.attr("class", "stat-label")
 			.attr("x", function(d, i) {
-				return (i * 200) + 60 - ctx.measureText(d).width;
+				return (i * 180) + 60 - ctx.measureText(d).width;
 			})
 			.attr("y", 40)
 			.text(function(d) { return d; });
 
-		select(node)
-			.selectAll("text.stat-value")
+		margin.selectAll("text.stat-value")
 			.data(type[this.props.type])
 			.enter().append("text")
 			.attr("class", "stat-value")
 			.attr("x", function(d, i) {
-				return (i * 200) + 60;
+				return (i * 180) + 60;
 			})
 			.attr("y", 40)
 			.text(function(d) {

@@ -32,8 +32,12 @@ class DailyDoubleOrder extends Component {
 			.domain([0, max(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder) * factor])
 			.range([0, height - 50]);
 
-		select(node)
+		var margin = select(node)
 			.append("g")
+			.attr("class", "svg-margins")
+			.attr("transform", "translate(40)");
+
+		margin.append("g")
 			.attr("class", "bars")
 			.selectAll("rect")
 			.data(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder)
@@ -48,8 +52,7 @@ class DailyDoubleOrder extends Component {
 			.attr("width", width / 30 - 2)
 			.attr("height", function(d) { return yScale(d * factor); });
 
-		select(node)
-			.append("g")
+		margin.append("g")
 			.attr("class", "bar-values")
 			.selectAll("text")
 			.data(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder)
@@ -73,8 +76,7 @@ class DailyDoubleOrder extends Component {
 
 		var xAxis = axisBottom(xScale);
 
-		select(node)
-			.append("g")
+		margin.append("g")
 			.attr("class", "x-axis")
 			.attr("transform", function() {
 				return "translate(" + (width / 30 / 2) + " " + (height - 21) + ")";
@@ -116,7 +118,7 @@ class DailyDoubleOrder extends Component {
 	}
 
 	render() {
-		return <svg ref={node => this.node = node} width={710} height={200} viewBox="0 0 710 200" preserveAspectRatio="xMinYMax meet"></svg>
+		return <svg ref={node => this.node = node} width={790} height={200} viewBox="0 0 790 200" preserveAspectRatio="xMidYMin meet"></svg>
 	}
 }
 

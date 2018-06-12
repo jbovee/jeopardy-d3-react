@@ -13,6 +13,11 @@
 	font-size: large;
 }
 
+svg {
+	width: 100%;
+	height: auto;
+}
+
 .subtitle {
 	color: #fff;
 	text-align: left;
@@ -26,4 +31,26 @@
 
 .indent {
 	margin-left: 40px;
+}
+
+@media screen and (max-width: 870px) {
+	.App {
+		width: 100%;
+	}
+
+	.App-title {
+		font-size: 2.2em;
+	}
+
+	.subtitle {
+		font-size: 1.5em;
+	}
+
+	.subsubtitle {
+		font-size: 1.2em;
+	}
+
+	.indent {
+		margin-left: 20px;
+	}
 }
