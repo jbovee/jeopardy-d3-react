@@ -1,16 +1,16 @@
 .App {
-  text-align: center;
-  width: 790px;
-  margin: 0 auto;
+	text-align: center;
+	width: 790px;
+	margin: 0 auto;
 }
 
 .App-title {
-  font-size: 4em;
-  color: white;
+	font-size: 4em;
+	color: white;
 }
 
 .App-intro {
-  font-size: large;
+	font-size: large;
 }
 
 .subtitle {
