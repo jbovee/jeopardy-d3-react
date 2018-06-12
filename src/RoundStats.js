@@ -71,10 +71,7 @@ class RoundStats extends Component {
 	}
 
 	render() {
-		return [
-		<h2 className="subtitle">{this.props.title}</h2>,
-		<svg ref={node => this.node = node} width={546} height={63} viewBox="0 0 546 63" preserveAspectRatio="xMinYMax meet"></svg>
-		]
+		return <svg ref={node => this.node = node} width={546} height={63} viewBox="0 0 546 63" preserveAspectRatio="xMinYMax meet"></svg>
 	}
 }
 

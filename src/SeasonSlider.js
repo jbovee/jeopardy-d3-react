@@ -87,9 +87,17 @@ class SeasonSlider extends Component {
 		var selectedSeason = this.state.all ? seasonsdataall : seasonsdata.seasons[this.state.season - 1];
 		return [
 			<div><svg id="slider" ref={node => this.node = node} width={710} height={55} viewBox="0 0 710 55" preserveAspectRatio="xMinYMax meet"> </svg></div>,
-			<div><DailyDoubleHeatMap data={selectedSeason} /></div>,
-			<div><RoundStats title={"Daily Double Wagers"} type={"dd"} data={selectedSeason} /></div>,
-			<div><RoundStats title={"Final Jeopardy Wagers"} type={"fj"} data={selectedSeason} /></div>
+			<div>
+				<DailyDoubleHeatMap data={selectedSeason} />
+			</div>,
+			<div className="indent">
+				<h2 className="subtitle">Daily Double Wagers</h2>
+				<RoundStats type={"dd"} data={selectedSeason} />
+			</div>,
+			<div className="indent">
+				<h2 className="subtitle">Final Jeopardy Wagers</h2>
+				<RoundStats type={"fj"} data={selectedSeason} />
+			</div>,
 		];
 	}
 }

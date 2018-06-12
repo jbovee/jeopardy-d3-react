@@ -1,9 +1,11 @@
 .App {
   text-align: center;
+  width: 790px;
+  margin: 0 auto;
 }
 
 .App-title {
-  font-size: 5em;
+  font-size: 4em;
   color: white;
 }
 
@@ -13,4 +15,15 @@
 
 .subtitle {
 	color: #fff;
+	text-align: left;
+}
+
+.subsubtitle {
+	color: #fff;
+	text-align: left;
+	margin-left: 10px;
+}
+
+.indent {
+	margin-left: 40px;
 }
