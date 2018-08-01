@@ -27,7 +27,7 @@ class SeasonSlider extends Component {
 			.width(640)
 			.tickValues(seasons)
 			.on('end', val => {
-				this.props.handlerFromParent(val);
+				this.props.handlerFromParent(false, val);
 			});
 
 		var margin = select(node)
