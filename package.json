@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "http://jbovee.github.io/jeopardy-d3-react",
   "dependencies": {
-    "bootstrap": "^4.1.1",
     "d3-array": "^1.2.1",
     "d3-axis": "^1.0.8",
     "d3-color": "^1.2.0",
@@ -18,7 +17,6 @@
     "jquery": "^3.3.1",
     "popper.js": "^1.14.3",
     "react": "^16.4.0",
-    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4"
   },
