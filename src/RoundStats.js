@@ -36,23 +36,17 @@ class RoundStats extends Component {
 			.data(["Max: ", "Min: ", "Avg: "])
 			.enter().append("text")
 			.attr("class", "stat-label")
-			.attr("x", function(d, i) {
-				return (i * 180) + 60 - ctx.measureText(d).width;
-			})
+			.attr("x", (d, i) => (i * 180) + 60 - ctx.measureText(d).width)
 			.attr("y", 40)
-			.text(function(d) { return d; });
+			.text(d => d);
 
 		margin.selectAll("text.stat-value")
 			.data(type[this.props.type])
 			.enter().append("text")
 			.attr("class", "stat-value")
-			.attr("x", function(d, i) {
-				return (i * 180) + 60;
-			})
+			.attr("x", (d, i) => (i * 180) + 60)
 			.attr("y", 40)
-			.text(function(d) {
-				return fmt(d);
-			});
+			.text(d => fmt(d));
 
 		canvas.remove();
 	}
@@ -69,7 +63,7 @@ class RoundStats extends Component {
 			.tween("text", function(d) {
 				var that = select(this),
 					i = interpolateNumber(that.text().replace(/,/g, ""), d);
-				return function(t) { that.text(fmt(i(t))); };
+				return t => that.text(fmt(i(t)));
 			});
 	}
 

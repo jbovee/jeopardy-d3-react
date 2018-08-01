@@ -58,9 +58,7 @@ class DailyDoubleHeatMap extends Component {
 		labels.append("text")
 			.attr("class", "colTitle")
 			.attr("fill", "#fff")
-			.attr("transform", function() {
-				return "translate(" + margin.left / 2 + " " + ((5 * cellHeight / 2) + margin.top) + ")rotate(-90)";
-			})
+			.attr("transform", () => "translate(" + margin.left / 2 + " " + ((5 * cellHeight / 2) + margin.top) + ")rotate(-90)")
 			.attr("font-size", labelFontSize)
 			.attr("text-anchor", "middle")
 			.attr("alignment-baseline", "central")
@@ -69,9 +67,7 @@ class DailyDoubleHeatMap extends Component {
 		labels.append("text")
 			.attr("class", "colTitle")
 			.attr("fill", "#fff")
-			.attr("transform", function() {
-				return "translate(" + (margin.left + (7 * cellWidth) + 10 + (margin.right / 2)) + " " + ((5 * cellHeight / 2) + margin.top) + ")rotate(-90)";
-			})
+			.attr("transform", () => "translate(" + (margin.left + (7 * cellWidth) + 10 + (margin.right / 2)) + " " + ((5 * cellHeight / 2) + margin.top) + ")rotate(-90)")
 			.attr("font-size", labelFontSize)
 			.attr("text-anchor", "middle")
 			.attr("alignment-baseline", "central")
@@ -82,21 +78,17 @@ class DailyDoubleHeatMap extends Component {
 			.data(this.props.data.locationTotals)
 			.enter().append("g")
 			.attr("class", "col")
-			.attr("transform", function(d, i) {
-				return "translate(" + (i * cellWidth + margin.left) + " " + margin.top + ")";
-			});
+			.attr("transform", (d, i) => "translate(" + (i * cellWidth + margin.left) + " " + margin.top + ")");
 
 		colors.domain([1, max(this.props.data.reduced) * factor]);
 
 		var cells = rects.selectAll("g")
 			.data(this.props.data.locationTotals);
 
-		cells.data(function(d) { return d; })
+		cells.data(d => d)
 			.enter().append("rect")
 			.attr("x", 0)
-			.attr("y", function(d, i) {
-				return i * cellHeight;
-			})
+			.attr("y", (d, i) => i * cellHeight)
 			.attr("height", cellHeight)
 			.attr("width", cellWidth)
 			.attr("class", "heatCell")
@@ -108,17 +100,13 @@ class DailyDoubleHeatMap extends Component {
 		var heatRows = select(node)
 			.append("g")
 			.attr("class", "rowTotals")
-			.attr("transform", function() {
-				return "translate(" + (6 * cellWidth + 10 + margin.left) + " " + margin.top + ")";
-			});
+			.attr("transform", () => "translate(" + (6 * cellWidth + 10 + margin.left) + " " + margin.top + ")");
 
 		heatRows.selectAll("rect")
 			.data(this.props.data.rowTotals)
 			.enter().append("rect")
 			.attr("x", 0)
-			.attr("y", function(d, i) {
-				return i * cellHeight;
-			})
+			.attr("y", (d, i) => i * cellHeight)
 			.attr("height", cellHeight)
 			.attr("width", cellWidth)
 			.attr("class", "heatRow")
@@ -129,16 +117,12 @@ class DailyDoubleHeatMap extends Component {
 		var heatCols = select(node)
 			.append("g")
 			.attr("class", "colTotals")
-			.attr("transform", function() {
-				return "translate(" + margin.left + " " + (5 * cellHeight + 10 + margin.top) + ")";
-			});
+			.attr("transform", () => "translate(" + margin.left + " " + (5 * cellHeight + 10 + margin.top) + ")");
 
 		heatCols.selectAll("rect")
 			.data(this.props.data.colTotals)
 			.enter().append("rect")
-			.attr("x", function(d, i) {
-				return i * cellWidth;
-			})
+			.attr("x", (d, i) => i * cellWidth)
 			.attr("y", 0)
 			.attr("height", cellHeight)
 			.attr("width", cellWidth)
@@ -158,24 +142,20 @@ class DailyDoubleHeatMap extends Component {
 					.attr("opacity", 0);
 			});
 
-		g.data(function(d) { return d; })
+		g.data(d => d)
 			.append("rect")
 			.attr("fill", "#000")
 			.attr("fill-opacity", 0.4)
 			.attr("x", 0)
-			.attr("y", function(d, i) {
-				return i * cellHeight;
-			})
+			.attr("y", (d, i) => i * cellHeight)
 			.attr("height", cellHeight)
 			.attr("width", cellWidth)
 			.attr("class", "tipCell");
 
-		g.data(function(d) { return d; })
+		g.data(d => d)
 			.append("text")
 			.attr("x", (cellWidth / 2))
-			.attr("y", function(d, i) {
-				return i * cellHeight + (cellHeight / 2);
-			})
+			.attr("y", (d, i) => i * cellHeight + (cellHeight / 2))
 			.attr("font-family", "sans-serif")
 			.attr("font-size", "24")
 			.attr("fill", "#fff")
@@ -203,18 +183,14 @@ class DailyDoubleHeatMap extends Component {
 			.attr("fill", "#000")
 			.attr("fill-opacity", 0.4)
 			.attr("x", 0)
-			.attr("y", function(d, i) {
-				return i * cellHeight;
-			})
+			.attr("y", (d, i) => i * cellHeight)
 			.attr("height", cellHeight)
 			.attr("width", cellWidth)
 			.attr("class", "rowTipCell");
 
 		gRow.append("text")
 			.attr("x", (cellWidth / 2))
-			.attr("y", function(d, i) {
-				return i * cellHeight + (cellHeight / 2);
-			})
+			.attr("y", (d, i) => i * cellHeight + (cellHeight / 2))
 			.attr("font-family", "sans-serif")
 			.attr("font-size", 24)
 			.attr("fill", "#fff")
@@ -241,18 +217,14 @@ class DailyDoubleHeatMap extends Component {
 		gCol.append("rect")
 			.attr("fill", "#000")
 			.attr("fill-opacity", 0.4)
-			.attr("x", function(d, i) {
-				return i * cellWidth;
-			})
+			.attr("x", (d, i) => i * cellWidth)
 			.attr("y", 0)
 			.attr("height", cellHeight)
 			.attr("width", cellWidth)
 			.attr("class", "colTipCell");
 
 		gCol.append("text")
-			.attr("x", function(d, i) {
-				return i * cellWidth + (cellWidth / 2);
-			})
+			.attr("x", (d, i) => i * cellWidth + (cellWidth / 2))
 			.attr("y", (cellHeight / 2))
 			.attr("font-family", "sans-serif")
 			.attr("font-size", 24)
@@ -275,16 +247,14 @@ class DailyDoubleHeatMap extends Component {
 			.data(this.props.data.locationTotals);
 
 		g.selectAll("rect.heatCell")
-			.data(function(d) { return d; })
+			.data(d => d)
 			.transition().duration(1000)
-			.attr("fill", function(d) {
-				return colors(d * factor);
-			});
+			.attr("fill", d => colors(d * factor));
 
 		g.selectAll("text.tip")
-			.data(function(d) { return d; })
+			.data(d => d)
 			.transition().duration(1000)
-			.text(function(d) { return d; });
+			.text(d => d);
 
 		colors.domain([1, max(this.props.data.rowTotals) * factor]);
 
@@ -294,14 +264,12 @@ class DailyDoubleHeatMap extends Component {
 		gRow.selectAll("rect.heatRow")
 			.data(this.props.data.rowTotals)
 			.transition().duration(1000)
-			.attr("fill", function(d) {
-				return colors(d * factor);
-			});
+			.attr("fill", d => colors(d * factor));
 
 		gRow.selectAll("text.rowTipText")
 			.data(this.props.data.rowTotals)
 			.transition().duration(1000)
-			.text(function(d) { return d; });
+			.text(d => d);
 
 		colors.domain([1, max(this.props.data.colTotals) * factor]);
 
@@ -311,14 +279,12 @@ class DailyDoubleHeatMap extends Component {
 		gCol.selectAll("rect.heatCol")
 			.data(this.props.data.colTotals)
 			.transition().duration(1000)
-			.attr("fill", function(d) {
-				return colors(d * factor);
-			});
+			.attr("fill", d => colors(d * factor));
 
 		gCol.selectAll("text.colTipText")
 			.data(this.props.data.colTotals)
 			.transition().duration(1000)
-			.text(function(d) { return d; });
+			.text(d => d);
 	}
 
 	render() {

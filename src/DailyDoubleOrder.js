@@ -43,14 +43,10 @@ class DailyDoubleOrder extends Component {
 			.data(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder)
 			.enter().append("rect")
 			.attr("class", "bar")
-			.attr("x", function(d, i) {
-				return i * (width / 30);
-			})
-			.attr("y", function(d) {
-				return height - yScale(d * factor) - 25;
-			})
+			.attr("x", (d, i) => i * (width / 30))
+			.attr("y", d => height - yScale(d * factor) - 25)
 			.attr("width", width / 30 - 2)
-			.attr("height", function(d) { return yScale(d * factor); });
+			.attr("height", d => yScale(d * factor));
 
 		margin.append("g")
 			.attr("class", "bar-values")
@@ -62,13 +58,9 @@ class DailyDoubleOrder extends Component {
 			.attr("font-size", 10)
 			.attr("font-family", "sans-serif")
 			.attr("fill", "#fff")
-			.attr("x", function(d, i) {
-				return i * (width / 30) + (width / 60) - 2;
-			})
-			.attr("y", function(d) {
-				return height - yScale(d * factor) - 31;
-			})
-			.text(function(d) { return d; });
+			.attr("x", (d, i) => i * (width / 30) + (width / 60) - 2)
+			.attr("y", d => height - yScale(d * factor) - 31)
+			.text(d => d);
 
 		var xScale = scalePoint()
 			.domain(ticks(1,30,30))
@@ -78,9 +70,7 @@ class DailyDoubleOrder extends Component {
 
 		margin.append("g")
 			.attr("class", "x-axis")
-			.attr("transform", function() {
-				return "translate(" + (width / 30 / 2) + " " + (height - 21) + ")";
-			})
+			.attr("transform", () => "translate(" + (width / 30 / 2) + " " + (height - 21) + ")")
 			.call(xAxis);
 	}
 
@@ -98,22 +88,18 @@ class DailyDoubleOrder extends Component {
 			.selectAll("g.bars rect")
 			.data(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder)
 			.transition().duration(1000)
-			.attr("y", function(d) {
-				return height - yScale(d * factor) - 25;
-			})
-			.attr("height", function(d) { return yScale(d * factor); });
+			.attr("y", d => height - yScale(d * factor) - 25)
+			.attr("height", d => yScale(d * factor));
 
 		select(node)
 			.selectAll("g.bar-values text")
 			.data(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder)
 			.transition().duration(1000)
-			.attr("y", function(d) {
-				return height - yScale(d * factor) - 31;
-			})
+			.attr("y", d => height - yScale(d * factor) - 31)
 			.tween("text", function(d) {
 				var that = select(this),
 					i = interpolateNumber(that.text(), d);
-				return function(t) { that.text(fmt(i(t))); };
+				return t => that.text(fmt(i(t)));
 			});
 	}
 
