@@ -23,16 +23,16 @@ class DailyDoubleOrder extends Component {
 	}
 
 	createChart() {
-		const node = this.node
-		const height = 200
-		const width = 710
-		const factor = 2
+		const node = this.node,
+			height = 200,
+			width = 710,
+			factor = 2;
 
-		var yScale = scaleLinear()
+		const yScale = scaleLinear()
 			.domain([0, max(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder) * factor])
 			.range([0, height - 50]);
 
-		var margin = select(node)
+		const margin = select(node)
 			.append("g")
 			.attr("class", "svg-margins")
 			.attr("transform", "translate(40)");
@@ -62,11 +62,11 @@ class DailyDoubleOrder extends Component {
 			.attr("y", d => height - yScale(d * factor) - 31)
 			.text(d => d);
 
-		var xScale = scalePoint()
+		const xScale = scalePoint()
 			.domain(ticks(1,30,30))
 			.range([0, width - 25]);
 
-		var xAxis = axisBottom(xScale);
+		const xAxis = axisBottom(xScale);
 
 		margin.append("g")
 			.attr("class", "x-axis")
@@ -75,12 +75,12 @@ class DailyDoubleOrder extends Component {
 	}
 
 	updateChart() {
-		const node = this.node
-		const factor = 2
-		const height = 200
-		const fmt = format(",d");
+		const node = this.node,
+			factor = 2,
+			height = 200,
+			fmt = format(",d");
 
-		var yScale = scaleLinear()
+		const yScale = scaleLinear()
 			.domain([0, max(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder) * factor])
 			.range([0, height - 50]);
 
@@ -97,7 +97,7 @@ class DailyDoubleOrder extends Component {
 			.transition().duration(1000)
 			.attr("y", d => height - yScale(d * factor) - 31)
 			.tween("text", function(d) {
-				var that = select(this),
+				const that = select(this),
 					i = interpolateNumber(that.text(), d);
 				return t => that.text(fmt(i(t)));
 			});

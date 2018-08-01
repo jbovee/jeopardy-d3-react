@@ -23,15 +23,15 @@ class DailyDoubleHeatMap extends Component {
 	}
 
 	createHeatMap() {
-		const node = this.node
-		const colors = this.colors
-		const factor = 10
-		const cellWidth = 100
-		const cellHeight = 80
-		const labelFontSize = 22
-		const margin = {"top": 40, "left": 40, "bottom": 40, "right": 40}
+		const node = this.node,
+			colors = this.colors,
+			factor = 10,
+			cellWidth = 100,
+			cellHeight = 80,
+			labelFontSize = 22,
+			margin = {"top": 40, "left": 40, "bottom": 40, "right": 40};
 
-		var labels = select(node)
+		const labels = select(node)
 			.append("g")
 			.attr("class", "labels")
 
@@ -73,7 +73,7 @@ class DailyDoubleHeatMap extends Component {
 			.attr("alignment-baseline", "central")
 			.text("Totals");
 
-		var rects = select(node)
+		const rects = select(node)
 			.selectAll("g.col")
 			.data(this.props.data.locationTotals)
 			.enter().append("g")
@@ -82,7 +82,7 @@ class DailyDoubleHeatMap extends Component {
 
 		colors.domain([1, max(this.props.data.reduced) * factor]);
 
-		var cells = rects.selectAll("g")
+		const cells = rects.selectAll("g")
 			.data(this.props.data.locationTotals);
 
 		cells.data(d => d)
@@ -97,7 +97,7 @@ class DailyDoubleHeatMap extends Component {
 
 		colors.domain([1, max(this.props.data.rowTotals) * factor]);
 
-		var heatRows = select(node)
+		const heatRows = select(node)
 			.append("g")
 			.attr("class", "rowTotals")
 			.attr("transform", () => "translate(" + (6 * cellWidth + 10 + margin.left) + " " + margin.top + ")");
@@ -114,7 +114,7 @@ class DailyDoubleHeatMap extends Component {
 
 		colors.domain([1, max(this.props.data.colTotals) * factor])
 
-		var heatCols = select(node)
+		const heatCols = select(node)
 			.append("g")
 			.attr("class", "colTotals")
 			.attr("transform", () => "translate(" + margin.left + " " + (5 * cellHeight + 10 + margin.top) + ")");
@@ -129,7 +129,7 @@ class DailyDoubleHeatMap extends Component {
 			.attr("class", "heatCol")
 			.attr("fill", "#fff");
 
-		var g = cells.enter().append("g")
+		const g = cells.enter().append("g")
 			.attr("opacity", 0)
 			.on("mouseover", function() {
 				select(this).transition()
@@ -164,7 +164,7 @@ class DailyDoubleHeatMap extends Component {
 			.attr("class", "tip")
 			.text("");
 
-		var gRow = heatRows.selectAll("g.rowTip")
+		const gRow = heatRows.selectAll("g.rowTip")
 			.data(this.props.data.rowTotals)
 			.enter().append("g")
 			.attr("opacity", 0)
@@ -199,7 +199,7 @@ class DailyDoubleHeatMap extends Component {
 			.attr("class", "rowTipText")
 			.text("");
 
-		var gCol = heatCols.selectAll("g.colTip")
+		const gCol = heatCols.selectAll("g.colTip")
 			.data(this.props.data.colTotals)
 			.enter().append("g")
 			.attr("opacity", 0)
@@ -236,13 +236,13 @@ class DailyDoubleHeatMap extends Component {
 	}
 
 	updateHeatMap() {
-		const node = this.node
-		const colors = this.colors
-		const factor = 10
+		const node = this.node,
+			colors = this.colors,
+			factor = 10;
 
 		colors.domain([1, max(this.props.data.reduced) * factor]);
 
-		var g= select(node)
+		const g= select(node)
 			.selectAll("g.col")
 			.data(this.props.data.locationTotals);
 
@@ -258,7 +258,7 @@ class DailyDoubleHeatMap extends Component {
 
 		colors.domain([1, max(this.props.data.rowTotals) * factor]);
 
-		var gRow = select(node)
+		const gRow = select(node)
 			.select("g.rowTotals");
 
 		gRow.selectAll("rect.heatRow")
@@ -273,7 +273,7 @@ class DailyDoubleHeatMap extends Component {
 
 		colors.domain([1, max(this.props.data.colTotals) * factor]);
 
-		var gCol = select(node)
+		const gCol = select(node)
 			.select("g.colTotals");
 
 		gCol.selectAll("rect.heatCol")

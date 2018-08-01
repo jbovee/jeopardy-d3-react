@@ -25,7 +25,7 @@ class AppWrapper extends Component {
     }
 
 	render() {
-        let data = this.state.all ? seasonsdataall : seasonsdata.seasons[this.state.season - 1];
+        const data = this.state.all ? seasonsdataall : seasonsdata.seasons[this.state.season - 1];
         return [
             <h1 className="App-title">Jeopardy Visualizations</h1>,
             <SeasonSlider startSeason={1} handlerFromParent={this.handleSeasonChange} />,

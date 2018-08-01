@@ -20,14 +20,14 @@ class RoundStats extends Component {
 	}
 
 	createStats() {
-		const node = this.node
-		const fmt = format(",d");
-		const type = { dd: [this.props.data.ddMax, this.props.data.ddMin, this.props.data.ddAvg], fj: [this.props.data.fjMax, this.props.data.fjMin, this.props.data.fjAvg]}
-		var canvas = document.createElement("canvas");
-		var ctx = canvas.getContext("2d");
+		const node = this.node,
+			fmt = format(",d"),
+			type = { dd: [this.props.data.ddMax, this.props.data.ddMin, this.props.data.ddAvg], fj: [this.props.data.fjMax, this.props.data.fjMin, this.props.data.fjAvg] },
+			canvas = document.createElement("canvas"),
+			ctx = canvas.getContext("2d");
 		ctx.font = "24px sans-serif";
 
-		var margin = select(node)
+		const margin = select(node)
 			.append("g")
 			.attr("class", "svg-margins")
 			.attr("transform", "translate(40)");
@@ -52,16 +52,17 @@ class RoundStats extends Component {
 	}
 
 	updateStats() {
-		const node = this.node
-		const fmt = format(",d");
-		const type = { dd: [this.props.data.ddMax, this.props.data.ddMin, this.props.data.ddAvg], fj: [this.props.data.fjMax, this.props.data.fjMin, this.props.data.fjAvg]}
+		const node = this.node,
+			fmt = format(",d"),
+			type = { dd: [this.props.data.ddMax, this.props.data.ddMin, this.props.data.ddAvg], fj: [this.props.data.fjMax, this.props.data.fjMin, this.props.data.fjAvg]};
+
 		select(node)
 			.selectAll("text.stat-value")
 			.data(type[this.props.type])
 			.transition()
 			.duration(1000)
 			.tween("text", function(d) {
-				var that = select(this),
+				const that = select(this),
 					i = interpolateNumber(that.text().replace(/,/g, ""), d);
 				return t => that.text(fmt(i(t)));
 			});

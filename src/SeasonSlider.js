@@ -16,11 +16,11 @@ class SeasonSlider extends Component {
 	}
 
 	createSeasonSlider() {
-		const node = this.node
-		const numSeasons = 34,
+		const node = this.node,
+			numSeasons = 34,
 			seasons = Array.from(new Array(numSeasons), (val,index)=>index+1);
 
-		var slider = sliderHorizontal()
+		const slider = sliderHorizontal()
 			.min(1)
 			.max(numSeasons)
 			.step(1)
@@ -30,7 +30,7 @@ class SeasonSlider extends Component {
 				this.props.handlerFromParent(false, val);
 			});
 
-		var margin = select(node)
+		const margin = select(node)
 			.append("g")
 			.attr("class", "svg-margins")
 			.attr("transform", "translate(40)");
@@ -40,7 +40,7 @@ class SeasonSlider extends Component {
 			.attr("transform", "translate(10 10)")
 			.call(slider);
 
-		var btn = margin.append("g")
+		const btn = margin.append("g")
 			.attr("id", "all-button")
 			.attr("transform", "translate(666 5)");
 
@@ -76,7 +76,7 @@ class SeasonSlider extends Component {
 				if(select(node).select("g#all-button rect").classed("clicked")) {
 					this.props.handlerFromParent(true, 0);
 				} else {
-					var s = parseInt(select(node).select("g#season-slider .parameter-value text").text());
+					const s = parseInt(select(node).select("g#season-slider .parameter-value text").text());
 					this.props.handlerFromParent(false, s);
 				}
 			}.bind(this));
