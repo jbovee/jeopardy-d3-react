@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import './RoundStats.css'
-import { interpolateNumber } from 'd3-interpolate'
-import { select } from 'd3-selection'
-import { format } from 'd3-format'
+import React, { Component } from 'react';
+import './RoundStats.css';
+import { interpolateNumber } from 'd3-interpolate';
+import { select } from 'd3-selection';
+import { format } from 'd3-format';
 
 class RoundStats extends Component {
 	constructor(props) {

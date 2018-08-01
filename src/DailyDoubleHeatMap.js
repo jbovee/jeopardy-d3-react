@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { scaleSequential } from 'd3-scale'
-import { interpolateBlues } from 'd3-scale-chromatic'
-import { transition } from 'd3-transition'
-import { select } from 'd3-selection'
-import { max } from 'd3-array'
+import React, { Component } from 'react';
+import { scaleSequential } from 'd3-scale';
+import { interpolateBlues } from 'd3-scale-chromatic';
+import { transition } from 'd3-transition';
+import { select } from 'd3-selection';
+import { max } from 'd3-array';
 
 class DailyDoubleHeatMap extends Component {
 	constructor(props) {

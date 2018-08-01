@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import './SeasonSlider.css'
-import { sliderHorizontal } from 'd3-simple-slider'
-import { select } from 'd3-selection'
+import React, { Component } from 'react';
+import './SeasonSlider.css';
+import { sliderHorizontal } from 'd3-simple-slider';
+import { select } from 'd3-selection';
 
 class SeasonSlider extends Component {
 	constructor(props) {

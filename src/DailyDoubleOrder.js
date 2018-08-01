@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import './DailyDoubleOrder.css'
-import { select } from 'd3-selection'
-import { ticks, max } from 'd3-array'
-import { format } from 'd3-format'
-import { scalePoint, scaleLinear } from 'd3-scale'
-import { axisBottom } from 'd3-axis'
-import { interpolateNumber } from 'd3-interpolate'
+import React, { Component } from 'react';
+import './DailyDoubleOrder.css';
+import { select } from 'd3-selection';
+import { ticks, max } from 'd3-array';
+import { format } from 'd3-format';
+import { scalePoint, scaleLinear } from 'd3-scale';
+import { axisBottom } from 'd3-axis';
+import { interpolateNumber } from 'd3-interpolate';
 
 class DailyDoubleOrder extends Component {
 	constructor(props) {
