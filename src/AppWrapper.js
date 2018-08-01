@@ -9,12 +9,19 @@ import seasonsdataall from './jeopardy-seasons-data-all'
 class AppWrapper extends Component {
 	constructor(props) {
 		super(props);
-        this.state = { all: false, season: 1};
+        this.state = { all: false, heatmapRound: 2, season: 1};
         this.handleSeasonChange = this.handleSeasonChange.bind(this);
+        this.changeHeatmapRound = this.changeHeatmapRound.bind(this);
     }
 
     componentDidMount() {
-        this.setState({ all: false, season: 1});
+        this.setState({ all: false, heatmapRound: 2, season: 1});
+    }
+
+    changeHeatmapRound(round) {
+        this.setState({
+            heatmapRound: round
+        });
     }
 
     handleSeasonChange(all, season) {
@@ -29,7 +36,10 @@ class AppWrapper extends Component {
         return [
             <h1 className="App-title">Jeopardy Visualizations</h1>,
             <SeasonSlider startSeason={1} handlerFromParent={this.handleSeasonChange} />,
-            <DailyDoubleHeatMap data={data} />,
+            <button onClick={() => this.changeHeatmapRound(0)} >Jeopardy</button>,
+            <button onClick={() => this.changeHeatmapRound(1)} >Double Jeopardy</button>,
+            <button onClick={() => this.changeHeatmapRound(2)} >All</button>,
+            <DailyDoubleHeatMap data={data} round={this.state.heatmapRound} />,
             <RoundStats title={"Daily Double Wagers"} type={"dd"} data={data} />,
             <RoundStats title={"Final Jeopardy Wagers"} type={"fj"} data={data} />,
             <h2 className="subtitle indent">Daily Double Pick Order</h2>,

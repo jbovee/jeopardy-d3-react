@@ -31,7 +31,18 @@ class DailyDoubleHeatMap extends Component {
 			labelFontSize = 22,
 			margin = {"top": 40, "left": 40, "bottom": 40, "right": 40};
 
-		const { locationTotals, reduced, rowTotals, colTotals } = this.props.data;
+		let { locationTotals, reduced, rowTotals, colTotals } = this.props.data;
+		if (this.props.round === 0) {
+			locationTotals = this.props.data.jLocationTotals;
+			reduced = this.props.data.jReduced;
+			rowTotals = this.props.data.jRowTotals;
+			colTotals = this.props.data.jColTotals;
+		} else if (this.props.round === 1) {
+			locationTotals = this.props.data.djLocationTotals;
+			reduced = this.props.data.djReduced;
+			rowTotals = this.props.data.djRowTotals;
+			colTotals = this.props.data.djColTotals;
+		}
 
 		const labels = select(node)
 			.append("g")
@@ -242,7 +253,18 @@ class DailyDoubleHeatMap extends Component {
 			colors = this.colors,
 			factor = 10;
 
-		const { locationTotals, reduced, rowTotals, colTotals } = this.props.data;
+		let { locationTotals, reduced, rowTotals, colTotals } = this.props.data;
+		if (this.props.round === 0) {
+			locationTotals = this.props.data.jLocationTotals;
+			reduced = this.props.data.jReduced;
+			rowTotals = this.props.data.jRowTotals;
+			colTotals = this.props.data.jColTotals;
+		} else if (this.props.round === 1) {
+			locationTotals = this.props.data.djLocationTotals;
+			reduced = this.props.data.djReduced;
+			rowTotals = this.props.data.djRowTotals;
+			colTotals = this.props.data.djColTotals;
+		}
 
 		colors.domain([1, max(reduced) * factor]);
 
