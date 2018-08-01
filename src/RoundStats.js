@@ -22,7 +22,8 @@ class RoundStats extends Component {
 	createStats() {
 		const node = this.node,
 			fmt = format(",d"),
-			type = { dd: [this.props.data.ddMax, this.props.data.ddMin, this.props.data.ddAvg], fj: [this.props.data.fjMax, this.props.data.fjMin, this.props.data.fjAvg] },
+			{ ddMax, ddMin, ddAvg, fjMax, fjMin, fjAvg } = this.props.data,
+			type = { dd: [ddMax, ddMin, ddAvg], fj: [fjMax, fjMin, fjAvg] },
 			canvas = document.createElement("canvas"),
 			ctx = canvas.getContext("2d");
 		ctx.font = "24px sans-serif";
@@ -54,7 +55,8 @@ class RoundStats extends Component {
 	updateStats() {
 		const node = this.node,
 			fmt = format(",d"),
-			type = { dd: [this.props.data.ddMax, this.props.data.ddMin, this.props.data.ddAvg], fj: [this.props.data.fjMax, this.props.data.fjMin, this.props.data.fjAvg]};
+			{ ddMax, ddMin, ddAvg, fjMax, fjMin, fjAvg } = this.props.data,
+			type = { dd: [ddMax, ddMin, ddAvg], fj: [fjMax, fjMin, fjAvg] };
 
 		select(node)
 			.selectAll("text.stat-value")

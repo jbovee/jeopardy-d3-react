@@ -27,9 +27,13 @@ class DailyDoubleOrder extends Component {
 			height = 200,
 			width = 710,
 			factor = 2;
+		
+		const { round } = this.props,
+			{ jOrder, djOrder } = this.props.data,
+			data = round === "j" ? jOrder : djOrder;
 
 		const yScale = scaleLinear()
-			.domain([0, max(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder) * factor])
+			.domain([0, max(data) * factor])
 			.range([0, height - 50]);
 
 		const margin = select(node)
@@ -40,7 +44,7 @@ class DailyDoubleOrder extends Component {
 		margin.append("g")
 			.attr("class", "bars")
 			.selectAll("rect")
-			.data(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder)
+			.data(data)
 			.enter().append("rect")
 			.attr("class", "bar")
 			.attr("x", (d, i) => i * (width / 30))
@@ -51,7 +55,7 @@ class DailyDoubleOrder extends Component {
 		margin.append("g")
 			.attr("class", "bar-values")
 			.selectAll("text")
-			.data(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder)
+			.data(data)
 			.enter().append("text")
 			.attr("class", "bar-value")
 			.attr("text-anchor", "middle")
@@ -80,20 +84,24 @@ class DailyDoubleOrder extends Component {
 			height = 200,
 			fmt = format(",d");
 
+		const { round } = this.props,
+			{ jOrder, djOrder } = this.props.data,
+			data = round === "j" ? jOrder : djOrder;
+
 		const yScale = scaleLinear()
-			.domain([0, max(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder) * factor])
+			.domain([0, max(data) * factor])
 			.range([0, height - 50]);
 
 		select(node)
 			.selectAll("g.bars rect")
-			.data(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder)
+			.data(data)
 			.transition().duration(1000)
 			.attr("y", d => height - yScale(d * factor) - 25)
 			.attr("height", d => yScale(d * factor));
 
 		select(node)
 			.selectAll("g.bar-values text")
-			.data(this.props.round === "j" ? this.props.data.jOrder : this.props.data.djOrder)
+			.data(data)
 			.transition().duration(1000)
 			.attr("y", d => height - yScale(d * factor) - 31)
 			.tween("text", function(d) {
