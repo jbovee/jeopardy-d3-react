@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-import SeasonSlider from './SeasonSlider'
+import AppWrapper from './AppWrapper'
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1 className="App-title">Jeopardy Visualizations</h1>
-	      <div>
-	      <SeasonSlider startSeason={1}/>
-	      </div>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className="App">
+				<AppWrapper />
+			</div>
+		);
+	}
 }
 
 export default App;

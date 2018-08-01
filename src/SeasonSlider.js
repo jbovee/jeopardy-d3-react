@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
 import './SeasonSlider.css'
-import DailyDoubleHeatMap from './DailyDoubleHeatMap'
-import DailyDoubleOrder from './DailyDoubleOrder'
-import RoundStats from './RoundStats'
-import seasonsdata from './jeopardy-seasons-data'
-import seasonsdataall from './jeopardy-seasons-data-all'
 import { sliderHorizontal } from 'd3-simple-slider'
 import { select } from 'd3-selection'
 
@@ -32,7 +27,7 @@ class SeasonSlider extends Component {
 			.width(640)
 			.tickValues(seasons)
 			.on('end', val => {
-				this.setState({ all: false, season: val });
+				this.props.handlerFromParent(val);
 			});
 
 		var margin = select(node)
@@ -79,39 +74,16 @@ class SeasonSlider extends Component {
 				select(node).select("g#season-slider").classed("disabled", !select(node).select("g#season-slider").classed("disabled"));
 				select(node).select("g#all-button rect").classed("clicked", !select(node).select("g#all-button rect").classed("clicked"));
 				if(select(node).select("g#all-button rect").classed("clicked")) {
-					this.setState({ all: true, season: 0 });
+					this.props.handlerFromParent(true, 0);
 				} else {
 					var s = parseInt(select(node).select("g#season-slider .parameter-value text").text());
-					this.setState({ all: false, season: s });
+					this.props.handlerFromParent(false, s);
 				}
 			}.bind(this));
 	}
 
 	render() {
-		var selectedSeason = this.state.all ? seasonsdataall : seasonsdata.seasons[this.state.season - 1];
-		return [
-			<div><svg id="slider" ref={node => this.node = node} width={790} height={55} viewBox="0 0 710 55" preserveAspectRatio="xMinYMax meet"> </svg></div>,
-			<div>
-				<DailyDoubleHeatMap data={selectedSeason} />
-			</div>,
-			<div>
-				<h2 className="subtitle indent">Daily Double Wagers</h2>
-				<RoundStats type={"dd"} data={selectedSeason} />
-			</div>,
-			<div>
-				<h2 className="subtitle indent">Final Jeopardy Wagers</h2>
-				<RoundStats type={"fj"} data={selectedSeason} />
-			</div>,
-			<h2 className="subtitle indent">Daily Double Pick Order</h2>,
-			<div>
-				<h3 className="subsubtitle indent">Jeopardy Round</h3>
-				<DailyDoubleOrder data={selectedSeason} round={"j"}/>
-			</div>,
-			<div>
-				<h3 className="subsubtitle indent">Double Jeopardy Round</h3>
-				<DailyDoubleOrder data={selectedSeason} round={"dj"}/>
-			</div>
-		];
+		return <svg id="slider" ref={node => this.node = node} width={790} height={55} viewBox="0 0 710 55" preserveAspectRatio="xMinYMax meet" />;
 	}
 }
 

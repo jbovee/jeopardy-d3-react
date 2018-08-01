@@ -4,7 +4,7 @@ import { select } from 'd3-selection'
 import { ticks, max } from 'd3-array'
 import { format } from 'd3-format'
 import { scalePoint, scaleLinear } from 'd3-scale'
-import { axisBottom, axisLeft } from 'd3-axis'
+import { axisBottom } from 'd3-axis'
 import { interpolateNumber } from 'd3-interpolate'
 
 class DailyDoubleOrder extends Component {
@@ -118,7 +118,10 @@ class DailyDoubleOrder extends Component {
 	}
 
 	render() {
-		return <svg ref={node => this.node = node} width={790} height={200} viewBox="0 0 790 200" preserveAspectRatio="xMidYMin meet"></svg>
+		return [
+			<h3 className="subsubtitle indent">{this.props.title}</h3>,
+			<svg ref={node => this.node = node} width={790} height={200} viewBox="0 0 790 200" preserveAspectRatio="xMidYMin meet" />
+		];
 	}
 }
 
