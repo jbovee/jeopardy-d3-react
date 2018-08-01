@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button, ButtonGroup } from 'reactstrap'
 import SeasonSlider from './SeasonSlider'
 import DailyDoubleHeatMap from './DailyDoubleHeatMap'
 import RoundStats from './RoundStats'
@@ -33,19 +34,23 @@ class AppWrapper extends Component {
 
 	render() {
         const data = this.state.all ? seasonsdataall : seasonsdata.seasons[this.state.season - 1];
-        return [
-            <h1 className="App-title">Jeopardy Visualizations</h1>,
-            <SeasonSlider startSeason={1} handlerFromParent={this.handleSeasonChange} />,
-            <button onClick={() => this.changeHeatmapRound(0)} >Jeopardy</button>,
-            <button onClick={() => this.changeHeatmapRound(1)} >Double Jeopardy</button>,
-            <button onClick={() => this.changeHeatmapRound(2)} >All</button>,
-            <DailyDoubleHeatMap data={data} round={this.state.heatmapRound} />,
-            <RoundStats title={"Daily Double Wagers"} type={"dd"} data={data} />,
-            <RoundStats title={"Final Jeopardy Wagers"} type={"fj"} data={data} />,
-            <h2 className="subtitle indent">Daily Double Pick Order</h2>,
-            <DailyDoubleOrder title={"Jeopardy Round"} data={data} round={"j"}/>,
-            <DailyDoubleOrder title={"Double Jeopardy Round"} data={data} round={"dj"}/>
-        ];
+        return (
+            <div className="app-wrapper">
+                <h1 className="App-title">Jeopardy Visualizations</h1>
+                <SeasonSlider startSeason={1} handlerFromParent={this.handleSeasonChange} />
+                <ButtonGroup>
+                    <Button color="secondary" onClick={() => this.changeHeatmapRound(0)} active={this.state.heatmapRound === 0} >Jeopardy</Button>
+                    <Button color="secondary" onClick={() => this.changeHeatmapRound(1)} active={this.state.heatmapRound === 1} >Double Jeopardy</Button>
+                    <Button color="secondary" onClick={() => this.changeHeatmapRound(2)} active={this.state.heatmapRound === 2} >All</Button>
+                </ButtonGroup>
+                <DailyDoubleHeatMap data={data} round={this.state.heatmapRound} />
+                <RoundStats title={"Daily Double Wagers"} type={"dd"} data={data} />
+                <RoundStats title={"Final Jeopardy Wagers"} type={"fj"} data={data} />
+                <h2 className="subtitle indent">Daily Double Pick Order</h2>
+                <DailyDoubleOrder title={"Jeopardy Round"} data={data} round={"j"}/>
+                <DailyDoubleOrder title={"Double Jeopardy Round"} data={data} round={"dj"}/>
+            </div>
+        );
 	}
 }
 
