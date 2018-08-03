@@ -40,7 +40,7 @@ class AppWrapper extends Component {
                 <Navbar handlerFromParent={this.handleSeasonChange}/>
                 <ButtonGroup>
                     <Button color="secondary" onClick={() => this.changeHeatmapRound(0)} active={this.state.heatmapRound === 0} >Jeopardy</Button>
-                    <Button color="secondary" onClick={() => this.changeHeatmapRound(1)} active={this.state.heatmapRound === 1} >Double Jeopardy</Button>
+                    <Button color="secondary" onClick={() => this.changeHeatmapRound(1)} active={this.state.heatmapRound === 1} >Double</Button>
                     <Button color="secondary" onClick={() => this.changeHeatmapRound(2)} active={this.state.heatmapRound === 2} >Both</Button>
                 </ButtonGroup>
                 <DailyDoubleHeatMap data={data} round={this.state.heatmapRound} />
