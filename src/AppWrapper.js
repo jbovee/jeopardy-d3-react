@@ -41,7 +41,7 @@ class AppWrapper extends Component {
                 <ButtonGroup>
                     <Button color="secondary" onClick={() => this.changeHeatmapRound(0)} active={this.state.heatmapRound === 0} >Jeopardy</Button>
                     <Button color="secondary" onClick={() => this.changeHeatmapRound(1)} active={this.state.heatmapRound === 1} >Double Jeopardy</Button>
-                    <Button color="secondary" onClick={() => this.changeHeatmapRound(2)} active={this.state.heatmapRound === 2} >All</Button>
+                    <Button color="secondary" onClick={() => this.changeHeatmapRound(2)} active={this.state.heatmapRound === 2} >Both</Button>
                 </ButtonGroup>
                 <DailyDoubleHeatMap data={data} round={this.state.heatmapRound} />
                 <RoundStats title={"Daily Double Wagers"} type={"dd"} data={data} />
