@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, ButtonGroup } from 'reactstrap'
+import Navbar from './Navbar'
 import SeasonSlider from './SeasonSlider'
 import DailyDoubleHeatMap from './DailyDoubleHeatMap'
 import RoundStats from './RoundStats'
@@ -36,8 +37,7 @@ class AppWrapper extends Component {
         const data = this.state.all ? seasonsdataall : seasonsdata.seasons[this.state.season - 1];
         return (
             <div className="app-wrapper">
-                <h1 className="App-title">Jeopardy Visualizations</h1>
-                <SeasonSlider startSeason={1} handlerFromParent={this.handleSeasonChange} />
+                <Navbar handlerFromParent={this.handleSeasonChange}/>
                 <ButtonGroup>
                     <Button color="secondary" onClick={() => this.changeHeatmapRound(0)} active={this.state.heatmapRound === 0} >Jeopardy</Button>
                     <Button color="secondary" onClick={() => this.changeHeatmapRound(1)} active={this.state.heatmapRound === 1} >Double Jeopardy</Button>

@@ -314,7 +314,7 @@ class DailyDoubleHeatMap extends Component {
 	}
 
 	render() {
-		return <svg ref={node => this.node = node} width={790} height={570} viewBox="0 0 790 570" preserveAspectRatio="xMidYMin meet" />;
+		return <svg className="vis" ref={node => this.node = node} width={790} height={570} viewBox="0 0 790 570" preserveAspectRatio="xMidYMin meet" />;
 	}
 }
 
