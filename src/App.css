@@ -21,6 +21,12 @@ h1, h2, h3 {
 	margin-top: 100px;
 }
 
+.navbar-nav {
+   -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
 svg.vis {
 	width: 100%;
 	height: auto;
