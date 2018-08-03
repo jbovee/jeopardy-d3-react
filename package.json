@@ -19,6 +19,7 @@
     "popper.js": "^1.14.3",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-responsive": "^5.0.0",
     "react-scripts": "1.1.4",
     "reactstrap": "^6.3.1"
   },
