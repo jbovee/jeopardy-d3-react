@@ -34,14 +34,14 @@ class NavBar extends Component {
 	render() {
 		return (
             <div>
-                <MediaQuery query="(min-device-width: 1224px)">
+                <MediaQuery query="(min-device-width: 710px)">
 					<Navbar color="dark" dark fixed="top">
 						<Nav className="mx-auto" navbar>
                             <SeasonSlider startSeason={1} handlerFromParent={this.props.handlerFromParent} />
 						</Nav>
 					</Navbar>
                 </MediaQuery>
-                <MediaQuery query="(max-device-width: 1224px)">
+                <MediaQuery query="(max-device-width: 710px)">
 					<Navbar color="dark" dark fixed="top">
 						<Nav className="mx-auto" navbar>
 							<NavItem>
