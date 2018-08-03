@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Button, ButtonGroup } from 'reactstrap'
 import Navbar from './Navbar'
-import SeasonSlider from './SeasonSlider'
 import DailyDoubleHeatMap from './DailyDoubleHeatMap'
 import RoundStats from './RoundStats'
 import DailyDoubleOrder from './DailyDoubleOrder'
