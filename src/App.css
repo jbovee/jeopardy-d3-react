@@ -17,6 +17,10 @@ h1, h2, h3 {
 	font-size: large;
 }
 
+.app-wrapper {
+	margin-top: 100px;
+}
+
 svg.vis {
 	width: 100%;
 	height: auto;
