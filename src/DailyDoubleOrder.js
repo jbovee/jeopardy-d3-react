@@ -114,7 +114,7 @@ class DailyDoubleOrder extends Component {
 	render() {
 		return [
 			<h3 className="subsubtitle indent">{this.props.title}</h3>,
-			<svg ref={node => this.node = node} width={790} height={200} viewBox="0 0 790 200" preserveAspectRatio="xMidYMin meet" />
+			<svg className="vis" ref={node => this.node = node} width={790} height={200} viewBox="0 0 790 200" preserveAspectRatio="xMidYMin meet" />
 		];
 	}
 }
