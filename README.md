@@ -16,7 +16,7 @@ Examples include:
 - Heatmap of Daily Double pick locations by season, including total by column and row
 
 ## Future Plans
-- Add a button/switcher to change heatmap between Jeopardy Round, Double Jeopardy Round, and both
+- ~~Add a button/switcher to change heatmap between Jeopardy Round, Double Jeopardy Round, and both~~
 - Add a button to change hover values above heatmap cells between raw count and percentages
 
 Jeopardy question information was obtained using [j-archive parsing script](https://github.com/jbovee/j-archive-parser), and is stored by season in the j-archive-csv directory.
